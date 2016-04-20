@@ -10,6 +10,7 @@ module React
       end
 
       def find_asset(logical_path)
+        puts "YAML Manifest assets #{@assets.inspect}"
         asset_path = @assets[logical_path] || raise("No compiled asset for #{logical_path}, was it precompiled?")
         asset_full_path = ::Rails.root.join("public", "assets", asset_path)
         File.read(asset_full_path)
