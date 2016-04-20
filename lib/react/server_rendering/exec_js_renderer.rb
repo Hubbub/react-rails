@@ -6,6 +6,14 @@ module React
     # - No browser concerns
     class ExecJSRenderer
       def initialize(options={})
+        puts '*'
+        puts '*'
+        puts '*'
+        puts '*'
+        puts '*'
+        puts '*'
+        puts '*'
+        puts options
         js_code = options[:code] || raise("Pass `code:` option to instantiate a JS context!")
         @context = ExecJS.compile(GLOBAL_WRAPPER + js_code)
       end
