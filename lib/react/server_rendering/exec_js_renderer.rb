@@ -7,6 +7,9 @@ module React
     class ExecJSRenderer
       def initialize(options={})
         js_code = options[:code] || raise("Pass `code:` option to instantiate a JS context!")
+        if js_code.is_a?(Proc)
+          js_code = js_code.call
+        end
         @context = ExecJS.compile(GLOBAL_WRAPPER + js_code)
       end
 
