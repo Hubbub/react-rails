@@ -11,6 +11,10 @@ module React
       end
 
       def render(component_name, props, prerender_options)
+        if !props.is_a?(String)
+          props = props.to_json
+        end
+        
         render_function = prerender_options.fetch(:render_function, "renderToString")
         js_code = <<-JS
           (function () {
